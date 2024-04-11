@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         init()
     }
     private fun init(){
-        repoAdapter = RepositoriesAdapter()
+        repoAdapter = RepositoriesAdapter(this)
         binding?.repoRecyclerView?.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding?.repoRecyclerView?.adapter = repoAdapter
 
@@ -69,5 +69,10 @@ class HomeActivity : AppCompatActivity() {
        super.onDestroy()
         repoAdapter = null
         binding = null
+    }
+
+    companion object{
+        const val REPO_ITEM = "repoItem"
+        const val REPO_BUNDLE = "bundle"
     }
 }

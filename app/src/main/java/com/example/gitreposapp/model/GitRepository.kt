@@ -1,18 +1,25 @@
 package com.example.gitreposapp.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class GitRepository (
-    val id: Long? = null,
-    val name: String? = null,
-    val owner: GitRepositoryOwner? = null,
+    @Json(name = "id")
+    val id: Long?,
+    @Json(name = "name")
+    val name: String?,
+    @Json(name = "owner")
+    val owner: GitRepositoryOwner?,
     @Json(name = "html_url")
-    val url: String? = null,
-    val description: String? = null,
+    val url: String?,
+    @Json(name = "description")
+    val description: String?,
     @Json(name = "stargazers_count")
-    val numberOfStars: Long? = null,
+    val numberOfStars: Long?,
     @Json(name = "language")
-    val programmingLanguage: String? = null
-)
+    val programmingLanguage: String?
+) : Parcelable
