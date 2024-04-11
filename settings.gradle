@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "GitRepos App"
+rootProject.name = "GitRepos"
 include ':app'
