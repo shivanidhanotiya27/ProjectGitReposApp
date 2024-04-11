@@ -7,11 +7,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -29,11 +29,13 @@ class NetworkModule {
     fun provideRetrofit(
         client: OkHttpClient,
         moshiConvertorFactory: MoshiConverterFactory,
+        scalarsConverterFactory: ScalarsConverterFactory,
         flowerCallConverterFactory: FlowerCallAdapterFactory
 
     ): Retrofit {
         return Retrofit.Builder().baseUrl(RestAPIs.BASE_URL)
             .addConverterFactory(moshiConvertorFactory)
+            .addConverterFactory(scalarsConverterFactory)
             .addCallAdapterFactory(flowerCallConverterFactory)
             .client(client)
             .build()
@@ -43,6 +45,12 @@ class NetworkModule {
     @Provides
     fun provideMoshiConvertorFactory(): MoshiConverterFactory {
         return MoshiConverterFactory.create()
+    }
+
+    @Singleton
+    @Provides
+    fun provideScalarsConverterFactory(): ScalarsConverterFactory {
+        return ScalarsConverterFactory.create()
     }
 
     @Singleton

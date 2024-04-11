@@ -12,8 +12,6 @@
         android:id="@+id/searchRepoItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp"
         app:queryHint="Search Repository Here"
         android:padding="5dp"
@@ -23,12 +21,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <TextView
+        android:id="@+id/noDataText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Search Results here"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/searchRepoItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/repoRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         tools:itemCount="10"
+        android:visibility="gone"
         tools:listitem="@layout/repo_list_item"
         app:layout_constraintTop_toBottomOf="@id/searchRepoItem"
         app:layout_constraintStart_toStartOf="parent"

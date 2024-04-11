@@ -12,11 +12,10 @@ class HomeRepository @Inject constructor(
 
     fun searchRepositories(
         searchQuery: String = "language:kotlin",
-        lastUpdated: String = ":2024-04-01",
         sortBy: String = "stars",
         orderBy: String = "desc"
     ) = Pager(config = PagingConfig(pageSize = 10, prefetchDistance = 30)){
-       RepositorySource(apiEndPointService, searchQuery,lastUpdated,sortBy,orderBy)
+       RepositorySource(apiEndPointService, searchQuery,sortBy,orderBy)
     }.flow
 }
 

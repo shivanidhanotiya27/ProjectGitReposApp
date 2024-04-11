@@ -5,12 +5,12 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class GitRepositoryOwner(
-    val id: Long,
+    val id: Long? = null,
     @Json(name = "login")
-    val userName: String,
+    val userName: String? = null,
     @Json(name = "avatar_url")
-    val url: String,
+    val url: String? = null,
     @Json(name = "html_url")
-    val profileUrl: String
+    val profileUrl: String? = null
     )
 
